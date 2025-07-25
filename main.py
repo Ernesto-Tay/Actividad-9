@@ -17,27 +17,27 @@ while True:
             for i in range(cant):
                 while True:
                     try:
-                        title = input(f"\nIngrese el título de la película {i+1}: ")
-                        launch = int(input(f"Ingrese la fecha de lazamiento: "))
-                        genre = input("Ingrese el género de la película: ").lower()
+                        titulo = input(f"\nIngrese el título de la película {i+1}: ")
+                        año = int(input(f"Ingrese la fecha de lazamiento: "))
+                        genero = input("Ingrese el género de la película: ").lower()
                         break
                     except:
                         print("Vuelva a intentarlo por favor")
 
-            peli = {"title": title,"lauch": launch,"genre": genre,}
+            peli = {"título": titulo,"año": año,"género": genero}
             peliculas.append(peli)
             print("Película añadida con éxito")
 
         case "2":
             for pelicula in peliculas:
-                print("\nNombre: "+pelicula["title"] + "\nLanzamiento:" + pelicula["launch"] + "\nGénero: " + pelicula["genre"])
+                print("\nNombre: "+pelicula["título"] + "\nLanzamiento:" + pelicula["año"] + "\nGénero: " + pelicula["género"])
 
         case "3":
             genre_search = input("\nIngrese el género a buscar: ").lower()
             print("Películas que coinciden con ese género: ")
             for pelicula in peliculas:
                 if pelicula["genre"] == genre_search:
-                    print("\nNombre: " + pelicula["title"] + "\nLanzamiento:" + pelicula["launch"] + "\nGénero: " + pelicula["genre"])
+                    print("\nNombre: "+pelicula["título"] + "\nLanzamiento:" + pelicula["año"] + "\nGénero: " + pelicula["género"])
 
         case "4":
             pass
