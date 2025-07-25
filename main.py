@@ -19,7 +19,7 @@ while True:
                     try:
                         title = input(f"\nIngrese el título de la película {i+1}: ")
                         launch = int(input(f"Ingrese la fecha de lazamiento: "))
-                        genre = input("Ingrese el género de la película: ")
+                        genre = input("Ingrese el género de la película: ").lower()
                         break
                     except:
                         print("Vuelva a intentarlo por favor")
@@ -33,7 +33,12 @@ while True:
                 print("\nNombre: "+pelicula["title"] + "\nLanzamiento:" + pelicula["launch"] + "\nGénero: " + pelicula["genre"])
 
         case "3":
-            pass
+            genre_search = input("\nIngrese el género a buscar: ").lower()
+            print("Películas que coinciden con ese género: ")
+            for pelicula in peliculas:
+                if pelicula["genre"] == genre_search:
+                    print("\nNombre: " + pelicula["title"] + "\nLanzamiento:" + pelicula["launch"] + "\nGénero: " + pelicula["genre"])
+
         case "4":
             pass
         case "5":
