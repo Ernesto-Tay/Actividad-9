@@ -34,10 +34,18 @@ while True:
             print("Película añadida con éxito")
 
         case "2":
+            if not peliculas:
+                print("No hay películas registradas")
+                continue
+
             for pelicula in peliculas:
                 print("\nNombre: "+pelicula["título"] + "\nLanzamiento:" + pelicula["año"] + "\nGénero: " + pelicula["género"])
 
         case "3":
+            if not peliculas:
+                print("No hay películas registradas")
+                continue
+
             genre_search = input("\nIngrese el género a buscar: ").lower()
             print("Películas que coinciden con ese género: ")
             match = False
@@ -49,6 +57,10 @@ while True:
                 print("No hay películas con ese género")
 
         case "4":
+            if not peliculas:
+                print("No hay películas registradas")
+                continue
+
             titulo_delete = input("\nIngrese el título de la película que desea eliminar: ")
             match2 = False
             for pelicula in peliculas:
@@ -61,6 +73,33 @@ while True:
                 print("No hay una película con ese nombre en la lista")
 
         case "5":
+            if not peliculas:
+                print("No hay películas registradas")
+                continue
+            print(f"\nPelículas registradas: {len(peliculas)}")
+            genres = []
+            for pelicula in peliculas:
+                if pelicula["género"] not in genres:
+                    genres.append(pelicula["género"])
+
+            if genres:
+                for genre in genres:
+                    genre_count = 0
+                    for pelicula in peliculas:
+                        if pelicula["género"] == genre:
+                            genre_count += 1
+                    print(f"Hay {genre_count} películas de género {genre}")
+
+            lower_age = 10000
+            for pelicula in peliculas:
+                if pelicula["año"] < lower_age:
+                    lower_age = pelicula["año"]
+
+            for pelicula in peliculas:
+                if pelicula["año"] == lower_age:
+                    print(f"Película más antigua registrada:\nTítulo: {[pelicula["título"]]}   Lanzamiento: {pelicula["año"]}   Género: {pelicula["género"]}")
+
+        case "6":
             print("\nSaliendo...")
             break
         case _:
