@@ -1,6 +1,6 @@
 peliculas = []
 while True:
-    print("\n----------Catálogo de películas-----------\n1. Agregar película\n2. Mostrar todas las películas\n3. Buscar películas por género\n4. Eliminar una película\n5. Mostrar estadísticas\n5. Salir")
+    print("\n\n----------Catálogo de películas-----------\n1. Agregar película\n2. Mostrar todas las películas\n3. Buscar películas por género\n4. Eliminar una película\n5. Mostrar estadísticas\n5. Salir")
     selection = input("Seleccione una opción: ")
     match selection:
         case "1":
@@ -18,18 +18,20 @@ while True:
                 while True:
                     try:
                         title = input(f"\nIngrese el título de la película {i+1}: ")
-                        lauch = int(input(f"Ingrese la fecha de lazamiento: "))
+                        launch = int(input(f"Ingrese la fecha de lazamiento: "))
                         genre = input("Ingrese el género de la película: ")
                         break
                     except:
                         print("Vuelva a intentarlo por favor")
 
-            peli = {"title": title,"lauch": lauch,"genre": genre,}
+            peli = {"title": title,"lauch": launch,"genre": genre,}
             peliculas.append(peli)
             print("Película añadida con éxito")
 
         case "2":
-            pass
+            for pelicula in peliculas:
+                print("\nNombre: "+pelicula["title"] + "\nLanzamiento:" + pelicula["launch"] + "\nGénero: " + pelicula["genre"])
+
         case "3":
             pass
         case "4":
