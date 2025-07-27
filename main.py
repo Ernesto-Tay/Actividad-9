@@ -18,23 +18,26 @@ while True:
                 while True:
                     try:
                         titulo = input(f"\nIngrese el título de la película {i+1}: ")
-                        año = int(input(f"Ingrese la fecha de lazamiento: "))
+                        ano = int(input(f"Ingrese la fecha de lazamiento: "))
                         genero = input("Ingrese el género de la película: ").lower()
                         titulo_repeat = False
                         if len(peliculas) > 0:
                             for pelicula in peliculas:
-                                if pelicula['título'] == titulo:
-                                    print("Ya hay una película con ese nombre")
+                                if pelicula['título'].lower() == titulo.lower():
                                     titulo_repeat = True
 
                         if titulo_repeat:
-                            break
-                        peli = {"título": titulo, "año": año, "género": genero}
+                            raise ValueError("Ya hay una película con ese nombre")
+
+                        peli = {"título": titulo, "año": ano, "género": genero}
                         peliculas.append(peli)
                         print("Película añadida con éxito")
                         break
-                    except:
-                        print("Vuelva a intentarlo por favor")
+                    except ValueError as e:
+                        if titulo_repeat:
+                            print(e)
+                        else:
+                            print("Vuelva a intentarlo por favor")
 
         case "2":
             if not peliculas:
@@ -99,8 +102,8 @@ while True:
                     lower_age = pelicula['año']
 
             for pelicula in peliculas:
-                if pelicula["año"] == lower_age:
-                    print(f"Película más antigua registrada:\nTítulo: {[pelicula['título']]}   Lanzamiento: {pelicula["año"]}   Género: {pelicula["género"]}")
+                if pelicula['año'] == lower_age:
+                    print(f"Película más antigua registrada:\nTítulo: {[pelicula['título']]}   Lanzamiento: {pelicula['año']}   Género: {pelicula['género']}")
 
         case "6":
             print("\nSaliendo...")
